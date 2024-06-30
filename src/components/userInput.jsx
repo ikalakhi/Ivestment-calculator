@@ -1,22 +1,4 @@
-import { useState } from "react";
-
-export default function UserInput(){
-    const [userInput, setUserInput] = useState({
-        initialInvestment: 10000,
-        annualInvestment: 1200,
-        expectedReturn: 6,
-        duration: 10
-    });
-
-    function handelChange(inputIdentifier, newValue) {
-        setUserInput(prevUserInput => {
-            return {
-                ...prevUserInput,
-                [inputIdentifier]: newValue
-            }
-        })
-    }
-    console.log(userInput);
+export default function UserInput({ onChangeInput, userInput }){
 
     return(
         <section id="user-input">
@@ -27,7 +9,7 @@ export default function UserInput(){
                         type="number" 
                         required
                         value={userInput.initialInvestment}
-                        onChange={(e) => handelChange("initialInvestment", e.target.value)}
+                        onChange={(e) => onChangeInput("initialInvestment", e.target.value)}
                     />
                 </p>
                 <p>
@@ -36,7 +18,7 @@ export default function UserInput(){
                         type="number" 
                         required
                         value={userInput.annualInvestment}
-                        onChange={(e) => handelChange("annualInvestment", e.target.value)}
+                        onChange={(e) => onChangeInput("annualInvestment", e.target.value)}
                     />
                 </p>
             </div>
@@ -47,7 +29,7 @@ export default function UserInput(){
                         type="number" 
                         required
                         value={userInput.expectedReturn}
-                        onChange={(e) => handelChange("expectedReturn", e.target.value)}
+                        onChange={(e) => onChangeInput("expectedReturn", e.target.value)}
                     />
                 </p>
                 <p>
@@ -56,7 +38,7 @@ export default function UserInput(){
                         type="number" 
                         required
                         value={userInput.duration}
-                        onChange={(e) => handelChange("duration", e.target.value)}
+                        onChange={(e) => onChangeInput("duration", e.target.value)}
                     />
                 </p>
             </div>
